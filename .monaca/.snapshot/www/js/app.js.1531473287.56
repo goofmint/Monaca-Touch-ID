@@ -1,0 +1,25 @@
+ons.ready(function() {
+  console.log("Onsen UI is ready!");
+  $('#checkStatus').onclick = (e) => {
+    window.plugins.touchid.isAvailable(function(result) {
+      $('#log').value = JSON.stringify(result);
+      $('#status').checked = result;
+    }, err => {
+      $('#log').value = JSON.stringify(err);
+    });
+  }
+  const myKey = 'myKey';
+  const message = '認証情報を保存します';
+  $('#register').onclick = (e) => {
+    const password = $('#password').value;
+    window.plugins.touchid.save(myKey, password, function(result) {
+      $('#log').value = JSON.stringify(result);
+    }, err => {
+      $('#log').value = JSON.stringify(err);
+    });
+  }
+});
+
+const $ = (name) => {
+  return document.querySelector(name);
+}

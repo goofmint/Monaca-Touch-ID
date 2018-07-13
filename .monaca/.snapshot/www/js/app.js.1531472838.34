@@ -1,0 +1,13 @@
+ons.ready(function() {
+  console.log("Onsen UI is ready!");
+  document.querySelector('#checkStatus').onclick = (e) => {
+    debugger;
+    document.querySelector('#log').value = JSON.stringify(window.plugins.touchid.isAvailable);
+    window.plugins.touchid.isAvailable(function(result) {
+      document.querySelector('#log').value = JSON.stringify(result);
+      document.querySelector('#status').checked = result;
+    }, err => {
+      document.querySelector('#log').value = JSON.stringify(err);
+    });
+  }
+});

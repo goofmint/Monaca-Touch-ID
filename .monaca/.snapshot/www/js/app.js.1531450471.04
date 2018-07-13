@@ -1,0 +1,11 @@
+ons.ready(function() {
+  console.log("Onsen UI is ready!");
+  console.log(Fingerprint.isAvailable);
+  Fingerprint.isAvailable(function(biometryType) {
+    alert(biometryType);
+    document.querySelector('#status').checked = biometryType;
+    document.querySelector('#log').value = JSON.stringify(biometryType);
+  }, err => {
+    document.querySelector('#log').value = JSON.stringify(err);
+  });
+});

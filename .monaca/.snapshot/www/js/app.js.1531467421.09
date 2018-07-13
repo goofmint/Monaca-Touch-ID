@@ -1,0 +1,12 @@
+ons.ready(function() {
+  console.log("Onsen UI is ready!");
+  console.log(window.plugins.touchid);
+  alert(Fingerprint);
+  window.plugins.touchid.isAvailable(function(result) {
+    alert(result);
+    document.querySelector('#log').value = JSON.stringify(result);
+    document.querySelector('#status').checked = result;
+  }, err => {
+    document.querySelector('#log').value = JSON.stringify(err);
+  });
+});

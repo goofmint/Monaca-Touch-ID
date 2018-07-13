@@ -1,0 +1,6 @@
+ons.ready(function() {
+  console.log("Onsen UI is ready!");
+  FingerprintAuth.isAvailable(result => {
+    document.querySelector('#status').checked = result.isAvailable;
+  });
+});
